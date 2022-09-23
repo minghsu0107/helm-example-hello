@@ -11,6 +11,8 @@ spec:
       {{- include "hello-world.selectorLabels" . | nindent 6 }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
       labels:
         {{- include "hello-world.selectorLabels" . | nindent 8 }}
     spec:
