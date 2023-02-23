@@ -15,7 +15,7 @@ export DEPLOY_NAMESPACE=test
 export VALUE_FILE=my/path/to/values.yaml
 export DOCKER_TAG=latest
 export RELEASE_NAME=hello
-helm upgrade --install --namespace $DEPLOY_NAMESPACE \
+helm --kube-context mycluster upgrade --install --namespace $DEPLOY_NAMESPACE \
 	--values $VALUE_FILE \
 	--set image.tag=$DOCKER_TAG \
 	$RELEASE_NAME \
